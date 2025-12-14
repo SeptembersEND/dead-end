@@ -1,15 +1,11 @@
 #!/bin/sh
 # <https://apidog.com/blog/supabase-api/>
-set -x
-
-# Set ALL:
-#	PS_DATABASE
-#	PS_TABLE
-#	PS_APIKEY
-
-echo $PS_DATABASE
-echo $PS_TABLE
-echo $PS_APIKEY
+if [[ -z "$PS_DATABASE" || -z "$PS_TABLE" || -z "$PS_APIKEY" ]]; then
+	echo -e 'Usage: PS_DATABASE="<database>" PS_TABLE="<table>" PS_APIKEY="<key>"'
+	echo -e 	'\tget-all.sh'
+	echo -e '\e[31mNo environment variables specified\e[0m'
+	exit
+fi
 
 curl "https://$PS_DATABASE.supabase.co/rest/v1/$PS_TABLE" \
 	-H "apikey: $PS_APIKEY" \
