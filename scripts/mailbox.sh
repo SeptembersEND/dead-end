@@ -5,6 +5,7 @@
 # 2) checks if any mail has changed, 3) Creates a temperary keyring, and 4)
 # decrypts you mail and saves them to a file in a seperate directory.
 #
+# context: requires one argument, the private key used to decrypt.
 # context: needs environment variables like get-all.sh does.
 #
 # return: 0 when successful execution, 1 on failure.
@@ -88,5 +89,5 @@ echo -e "\n"
 
 
 # CLEANUP
-rm -r $KEYRING*
+rm -r $KEYRING
 exit 0
