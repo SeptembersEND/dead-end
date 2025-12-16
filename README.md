@@ -9,7 +9,19 @@ The "Dead End" Analogy is to symbolize dropping a message into a secretly known
 door. This allows for the "Dead Drop" part, a secret location, while also
 preventing anyone from intercepting the messages contents.
 
-This has a neish use. This approach allows for high *confidentiality* and
-*accessibility*, from the *CIA Triad*. It does not however, allow for
-verification of the data, except through extensions within the message. So the
-*integrity* is basically non-existent.
+
+## Database
+
+Currently the only supported database is [supabase.io](https://supabase.io/).
+More databases should become possible.
+
+
+## Drop Point (Javascript)
+
+The drop point is a HTML, CSS, and Javascript Site, to allow the use of
+"static" site hosting, and still interact with the database.
+
+
+## Docs
+
+- [Scripts](./docs/scripts.md)

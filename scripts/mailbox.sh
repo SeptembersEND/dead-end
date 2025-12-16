@@ -5,6 +5,7 @@
 # 2) checks if any mail has changed, 3) Creates a temperary keyring, and 4)
 # decrypts you mail and saves them to a file in a seperate directory.
 #
+# context: requires one argument, the private key used to decrypt.
 # context: needs environment variables like get-all.sh does.
 #
 # return: 0 when successful execution, 1 on failure.
@@ -60,6 +61,7 @@ fi
 
 
 # KEYRING
+export GPG_TTY=$(tty)
 gpg -q --no-default-keyring --keyring $KEYRING --import $1
 
 
@@ -75,7 +77,7 @@ if ! mkdir -p msgs; then
 	exit 1
 fi
 COUNT=0
-echo -n "Exported Mail to 'msgs_':"
+echo "Exported Mail to 'msgs_':"
 cat $UMAIL | jq '.[]|.msg' |
 	while read -r msg; do # `-r` does something to allow \n
 		COUNT=$((COUNT+1))
@@ -88,5 +90,5 @@ echo -e "\n"
 
 
 # CLEANUP
-rm -r $KEYRING*
+rm -r $KEYRING
 exit 0
